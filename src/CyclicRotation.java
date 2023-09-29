@@ -1,3 +1,4 @@
+
 public class CyclicRotation {
     public int[] solution(int[] A, int K ){
         int N = A.length;
@@ -5,11 +6,11 @@ public class CyclicRotation {
             return A;
         }
         int[] rotatedArray = new int[N];
-        //Copy the elements after rotation to new Array.
-        System.arraycopy(A,N-K,rotatedArray,0,K);
-        // Copy the elements before rotation to new array
-        System.arraycopy(A,0,rotatedArray,K,N-K);
-
+        K = K%N;
+        for(int i=0;i<N;i++){
+            int newPos = (i+K) % N;
+            rotatedArray[newPos]=A[i];
+        }
         return rotatedArray;
     }
 
